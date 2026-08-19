@@ -1,0 +1,36 @@
+# Role Detection Framework for CyberLab AI
+
+## Overview
+This prompt framework powers the 4D free-text role detection mechanism. It evaluates free-text input to accurately classify the user into one of 14 personas.
+
+## The 14 Personas
+1. Cybersecurity Student
+2. SOC Analyst
+3. Pen Tester
+4. IT Practitioner
+5. IT Manager
+6. Network Engineer
+7. Developer
+8. Business Owner
+9. Educator
+10. Sales Engineer
+11. Data Professional
+12. Project Manager
+13. Financial Analyst
+14. General Audience
+
+## Detection Strategy
+The LLM evaluates the input against four dimensions (4D):
+- **Technical Depth**: Use of jargon, architectural concepts, or fundamental questions.
+- **Operational Goal**: Focus on fixing (builder), preventing (defense), auditing (compliance), or understanding (learning).
+- **Business vs. Technical Focus**: Concern for ROI and risk vs. packets and configurations.
+- **Contextual Clues**: Explicit mentions of role or implicitly role-aligned activities.
+
+## System Prompt Example
+```markdown
+You are a persona detection engine. Given the user's input, classify them into exactly ONE of the 14 defined personas.
+Output your response as JSON with the key "persona".
+
+Input: "How do I configure IAM roles for least privilege in AWS to pass our SOC2 audit?"
+Output: {"persona": "IT Manager"}
+```
