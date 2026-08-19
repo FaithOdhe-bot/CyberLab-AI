@@ -1,0 +1,33 @@
+# CyberLab AI: AWS Serverless Architecture
+
+## Overview
+CyberLab AI Phase 2 utilizes a fully serverless AWS architecture to ensure high availability, scalability, and security while maintaining cost-efficiency.
+
+## Cloud Topology & Request Flow
+
+1. **Client (S3 / CloudFront)**
+   - The static frontend web application (React/Next.js) is hosted on an S3 bucket and distributed globally via CloudFront.
+
+2. **AWS WAF (Web Application Firewall)**
+   - Protects the API Gateway from common web exploits (SQLi, XSS) and enforces rate-limiting to prevent DoS attacks and control LLM invocation costs.
+
+3. **API Gateway**
+   - Routes incoming RESTful API requests from the client to the appropriate backend Lambda functions. Handles request validation and CORS.
+
+4. **AWS Lambda (Compute Layer)**
+   - Executes the core business logic, user role detection, prompt construction, and widget orchestration.
+   - Implements the SSRF Protection Engine for any required outbound validation.
+
+5. **Amazon Bedrock (Claude Sonnet)**
+   - The primary LLM engine. Lambda invokes Claude Sonnet via `boto3` to generate the adaptive 4D security responses and populate the widgets.
+
+6. **Amazon DynamoDB**
+   - NoSQL database used for fast, low-latency session storage, chat history management, and user preference tracking.
+
+7. **Amazon Cognito**
+   - Manages user authentication, authorization, and secure JWT token issuance for API access.
+
+## Security Controls
+- **Least-Privilege IAM:** Lambda execution roles are strictly scoped to allow only required Bedrock model invocations and DynamoDB table operations.
+- **Data Encryption:** All data is encrypted at rest (DynamoDB KMS) and in transit (TLS 1.2+ via API Gateway/CloudFront).
+- **Secrets Management:** Any sensitive API keys or configuration secrets are stored securely in AWS Secrets Manager.
