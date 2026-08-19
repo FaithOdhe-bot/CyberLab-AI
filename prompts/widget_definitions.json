@@ -1,0 +1,59 @@
+{
+  "widgets": [
+    {
+      "name": "TL;DR",
+      "description": "High-level summary of the issue.",
+      "system_prompt": "Provide a 2-3 sentence high-level summary of the security issue. Keep it extremely concise."
+    },
+    {
+      "name": "Quick Read",
+      "description": "Fast, actionable insights.",
+      "system_prompt": "Provide bullet points outlining the core problem and immediate next steps. Aim for rapid comprehension."
+    },
+    {
+      "name": "Diagnose",
+      "description": "Root cause analysis.",
+      "system_prompt": "Analyze the technical root cause of the vulnerability or issue. Explain how the failure occurred at the architectural or code level."
+    },
+    {
+      "name": "Respond",
+      "description": "60-minute incident containment playbook.",
+      "system_prompt": "Provide a step-by-step incident response playbook for the first 60 minutes. Focus on immediate containment, eradication, and evidence preservation."
+    },
+    {
+      "name": "Harden",
+      "description": "Proactive security controls.",
+      "system_prompt": "Recommend proactive security configurations, architectural changes, and policies to prevent this issue from recurring."
+    },
+    {
+      "name": "Cloud",
+      "description": "Cloud infrastructure/Console remediation paths.",
+      "system_prompt": "Provide specific AWS/Azure/GCP console steps or Terraform/CloudFormation snippets to remediate the vulnerability in the cloud environment."
+    },
+    {
+      "name": "Map",
+      "description": "Blast radius and dependency mapping.",
+      "system_prompt": "Map out the potential blast radius of this vulnerability. Identify affected downstream services, databases, and dependencies."
+    },
+    {
+      "name": "Translate",
+      "description": "Layman explanation for non-technical stakeholders.",
+      "system_prompt": "Explain this security issue using an analogy suitable for a non-technical executive or business owner. Avoid jargon."
+    },
+    {
+      "name": "Comply",
+      "description": "Audit and compliance gap analysis.",
+      "system_prompt": "Analyze how this issue impacts common compliance frameworks (e.g., SOC2, HIPAA, GDPR). Identify specific control gaps."
+    },
+    {
+      "name": "Simulate",
+      "description": "Attack simulation scenarios.",
+      "system_prompt": "Describe a step-by-step kill chain an attacker would use to exploit this vulnerability in a real-world scenario."
+    },
+    {
+      "name": "Learn",
+      "description": "Educational deep-dives.",
+      "system_prompt": "Provide a comprehensive, foundational explanation of the underlying security concept. Include historical context and fundamental principles."
+    }
+  ]
+}
